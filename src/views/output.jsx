@@ -1,23 +1,42 @@
 export function Output({ uploadedFile }) {
   const removeComments = (file) => {
     let string = '';
-    for (let i = 0; i < file.length; i++) {
+    let i = 0;
+    let nestedLevel = 0;
+
+    while (i < file.length) {
       if (file.charAt(i) === '/' && file.charAt(i + 1) === '*') {
+        if (nestedLevel === 0) {
+          nestedLevel = 1;
+        } else {
+          nestedLevel++;
+        }
         i += 2;
-        while (!(file.charAt(i) === '*' && file.charAt(i + 1) === '/') && i < file.length) {
+      } else if (file.charAt(i) === '*' && file.charAt(i + 1) === '/') {
+        if (nestedLevel === 1) {
+          nestedLevel = 0;
+          i += 2;
+        } else if (nestedLevel > 1) {
+          nestedLevel--;
+          i += 2;
+        } else {
           string += file.charAt(i);
           i++;
         }
-        i += 2;
       } else if (file.charAt(i) === '/' && file.charAt(i + 1) === '/') {
-        i += 2;
-        while (file.charAt(i) !== '\n' && i < file.length) {
+        if (nestedLevel === 0) {
+          i += 2;
+          continue;
+        } else {
+          string += file.charAt(i);
           i++;
         }
       } else {
         string += file.charAt(i);
+        i++;
       }
     }
+
     return string;
   };
 

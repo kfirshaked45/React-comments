@@ -1,35 +1,20 @@
-/* Testings how 
-my app works
-*/
 
-
-// test 1
-// test 2
-/* test 3
-*/
-
-
-
-
-
-/*    test  /*
-
-
-
-
-sasd
-
-*/
 /*
+ * multi line
+ * /* nestedd comment */
+ */
 
-// fgdfgdfg
+// single-line comment lines // test
+// Line 1
+// Line 2
 
+const obj = {
+  prop: 'value', // Inline comment
+  /*
+   * Multi-line comment within object
+   */
+};
 
-*/
 /*
-
-asdas
-3
-
-
-*/
+ * Nested comment with unmatched closing
+`
