@@ -8,7 +8,6 @@ export function Output({ uploadedFile }) {
           string += file.charAt(i);
           i++;
         }
-
         i += 2;
       } else if (file.charAt(i) === '/' && file.charAt(i + 1) === '/') {
         i += 2;
@@ -19,22 +18,7 @@ export function Output({ uploadedFile }) {
     return string;
   };
 
-  const fileWithoutComments = removeComments(uploadedFile);
+  const stringWithoutComments = removeComments(uploadedFile);
 
-  return <div>{fileWithoutComments}</div>;
+  return <div>{stringWithoutComments}</div>;
 }
-
-// const removeComments = (file) =>{
-//     let string = ''
-//     for (let i = 0; i < file.length; i++) {
-
-//         if(file.charAt(i) === '/' && file.charAt === '*'){
-//             i += 2
-//             while(!file.charAt(i) === '*'  &&  !file.charAt(i + 1) === '/'){
-
-//             }
-//         }
-
-//     }
-
-// }
