@@ -11,6 +11,9 @@ export function Output({ uploadedFile }) {
         i += 2;
       } else if (file.charAt(i) === '/' && file.charAt(i + 1) === '/') {
         i += 2;
+        while (file.charAt(i) !== '\n' && i < file.length) {
+          i++;
+        }
       } else {
         string += file.charAt(i);
       }
