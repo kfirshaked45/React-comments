@@ -6,6 +6,7 @@ export function Output({ uploadedFile }) {
 
     while (i < file.length) {
       if (file.charAt(i) === '/' && file.charAt(i + 1) === '*') {
+        // If nested is 0, start counting the levels
         if (nestedLevel === 0) {
           nestedLevel = 1;
         } else {
@@ -13,6 +14,7 @@ export function Output({ uploadedFile }) {
         }
         i += 2;
       } else if (file.charAt(i) === '*' && file.charAt(i + 1) === '/') {
+        // if its level 1 , meaning there's no more to check and it moves on
         if (nestedLevel === 1) {
           nestedLevel = 0;
           i += 2;
